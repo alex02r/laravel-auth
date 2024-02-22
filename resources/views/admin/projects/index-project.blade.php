@@ -3,7 +3,14 @@
     <div class="container">
         <div class="row row-gap-3">
             <div class="col-12 p-3">
-                <h1>POJECTS</h1>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="">
+                        <h1>POJECTS</h1>
+                    </div>
+                    <div class="">
+                        <a class="btn btn-warning" href="{{ route('admin.project.create') }}">Add project</a>
+                    </div>
+                </div>
             </div>
             @foreach ($projects as $project)
                 <div class="col-3">
