@@ -26,14 +26,14 @@ class UpdateProjectRequest extends FormRequest
         return [
             'name'=>'required',
             'description'=>'required',
-            'date_start'=>'required'
+            'start_date'=>'required'
         ];
     }
     public function messages(){
         return [
             'name' => 'Il Nome del progetto deve essere obbligatorio',
             'description' => 'La descrizione del progetto deve essere obbligatoria',
-            'date_start' => 'La data di inizio del progetto deve essere obbligatoria',
+            'start_date' => 'La data di inizio del progetto deve essere obbligatoria',
         ];
     }
 }
