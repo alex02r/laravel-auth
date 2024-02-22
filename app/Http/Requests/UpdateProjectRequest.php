@@ -13,7 +13,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required',
+            'description'=>'required',
+            'date_start'=>'required'
+        ];
+    }
+    public function messages(){
+        return [
+            'name' => 'Il Nome del progetto deve essere obbligatorio',
+            'description' => 'La descrizione del progetto deve essere obbligatoria',
+            'date_start' => 'La data di inizio del progetto deve essere obbligatoria',
         ];
     }
 }
