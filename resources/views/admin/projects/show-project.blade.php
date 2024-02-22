@@ -7,7 +7,7 @@
                     <div class="card-header">
                         <div class="d-flex w-100 justify-content-end gap-2">
                             <a href="{{ route('admin.project.edit', ['project'=>$project]) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('admin.project.destroy', ['project'=>$project]) }}" method="post">
+                            <form action="{{ route('admin.project.destroy', ['project'=>$project]) }}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo project')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger">Elimina</button>

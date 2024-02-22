@@ -40,7 +40,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $form_data = $request->all();
-        $new_project = new Project;
+        $new_project = new Project();
         $new_project->fill($form_data);
         $new_project->slug = Str::slug($new_project->name, '-');
         $new_project->save();
@@ -92,6 +92,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.project.index');
     }
 }
