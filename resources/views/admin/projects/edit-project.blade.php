@@ -4,7 +4,16 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 <div class="shadow rounded p-4">
-                    <form action="{{ route('admin.projects.update', ['project'=>$project]) }}" method="post">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form action="{{ route('admin.project.update', ['project'=>$project]) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -18,11 +27,11 @@
                         <div class="d-flex gap-4 mb-3">
                             <div class="">
                                 <label for="start_date">Modifica data inizio</label>
-                                <input type="date" class="form-control" name="start_date" id="start_date">
+                                <input type="date" class="form-control" name="start_date" id="start_date" value="{{ old('start_date') ?? $project['start_date'] }}">
                             </div>
                             <div class="">
                                 <label for="end_date">Modifica data fine</label>
-                                <input type="date" class="form-control" name="end_date" id="end_date">
+                                <input type="date" class="form-control" name="end_date" id="end_date" value="{{ old('end_date') ?? $project['end_date'] }}">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Salva</button>
