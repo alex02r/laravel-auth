@@ -13,7 +13,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required',
+            'description'=>'required',
+            'start_date'=>'required'
+        ];
+    }
+    public function messages(){
+        return [
+            'name' => 'Il Nome del progetto deve essere obbligatorio',
+            'description' => 'La descrizione del progetto deve essere obbligatoria',
+            'start_date' => 'La data di inizio del progetto deve essere obbligatoria',
         ];
     }
 }
