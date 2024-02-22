@@ -6,8 +6,12 @@
                    <div class="card shadow">
                     <div class="card-header">
                         <div class="d-flex w-100 justify-content-end gap-2">
-                            <div class="btn btn-sm btn-warning"><a href="{{ route('admin.project.edit', ['project'=>$project]) }}" class="link-dark link-underline-opacity-0">Edit</a></div>
-                            <div class="btn btn-sm btn-danger"><a href="" class="link-light link-underline-opacity-0">Delete</a></div>
+                            <a href="{{ route('admin.project.edit', ['project'=>$project]) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('admin.project.destroy', ['project'=>$project]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Elimina</button>
+                            </form>
                         </div>
                     </div>
                         <img class="card-img-start-fluid p-3 w-25" src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" alt="folder">
