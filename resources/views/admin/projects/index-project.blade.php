@@ -20,8 +20,14 @@
                           <h5 class="card-title">{{ $project->name}}</h5>
                           <div class="text-secondary">Data Creazione: {{ $project->start_date }}</div>
                           <div class="text-secondary">Data Fine: {{ $project->end_date }}</div>
-                          <div class="mt-2">
-                            <a href="{{ route('admin.project.show', ['project' => $project]) }}" class="btn btn-warning">Visualizza</a>
+                          <div class="mt-2 d-flex gap-2">
+                            <a href="{{ route('admin.project.show', ['project' => $project]) }}" class="btn btn-sm btn-primary">Visualizza</a>
+                            <a href="{{ route('admin.project.edit', ['project'=>$project]) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('admin.project.destroy', ['project'=>$project]) }}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo project')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Elimina</button>
+                            </form>
                           </div>
                         </div>
                     </div>
