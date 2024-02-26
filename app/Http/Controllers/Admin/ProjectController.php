@@ -6,7 +6,10 @@ use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str ;
+
+use function PHPUnit\Framework\isNull;
 
 class ProjectController extends Controller
 {
@@ -41,6 +44,12 @@ class ProjectController extends Controller
     {
         $form_data = $request->all();
         $new_project = new Project();
+
+        if (!isNull($form_data['img'])) {
+            $img_path = Storage::disk('public')->put('uploads', $form_data['img']);
+            $form_data['img'] = $img_path;
+        }
+
         $new_project->fill($form_data);
         $new_project->slug = Str::slug($new_project->name, '-');
         $new_project->save();
