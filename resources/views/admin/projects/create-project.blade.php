@@ -16,10 +16,14 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('admin.project.store') }}" method="post">
-                        @csrf
+                    <form action="{{ route('admin.project.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf{{-- 
                         <div class="d-flex align-items-center justify-content-center">
                             <img class="w-25" src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" alt="folde img">
+                        </div> --}}
+                        <div class="my-3">
+                            <label for="img" class="form-label">Inserisci un immagine: </label>
+                            <input type="file" name="img" id="img">
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Inserisci il Titolo:</label>
