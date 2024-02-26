@@ -13,9 +13,13 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('admin.project.update', ['project'=>$project]) }}" method="post">
+                    <form action="{{ route('admin.project.update', ['project'=>$project]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+                        <div class="my-3">
+                            <label for="img" class="form-label">Modifica l'immagine: </label>
+                            <input type="file" name="img" id="img">
+                        </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Modifica il Titolo:</label>
                             <input type="text" class="form-control" name="name" id="name" value="{{ old('name') ?? $project['name'] }}">

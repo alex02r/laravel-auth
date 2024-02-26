@@ -44,7 +44,7 @@ class ProjectController extends Controller
     {
         $form_data = $request->all();
         $new_project = new Project();
-        
+
         if ($request->hasFile('img')) {
             $img_path = Storage::disk('public')->put('uploads', $form_data['img']);
             $form_data['img'] = $img_path;
@@ -88,6 +88,12 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->all();
+
+        if ($request->hasFile('img')) {
+            $img_path = Storage::disk('public')->put('uploads', $form_data['img']);
+            $form_data['img'] = $img_path;
+        }
+
         $form_data['slug'] = Str::slug($form_data['name'], '-');
         $project->update($form_data);
         return redirect()->route('admin.project.show', ['project'=>$project]);
