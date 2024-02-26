@@ -15,7 +15,7 @@
             @foreach ($projects as $project)
                 <div class="col-3">
                     <div class="card shadow h-100">
-                        <img class="card-img-top p-3" src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" alt="folder">
+                        <img class="card-img-top p-3" src="{{ $project->img !== null ? asset('storage/'. $project->img) : 'https://cdn-icons-png.flaticon.com/512/3767/3767084.png' }}" alt="img project">
                         <div class="card-body">
                           <h5 class="card-title">{{ $project->name}}</h5>
                           <div class="text-secondary">Data Creazione: {{ $project->start_date }}</div>

@@ -14,7 +14,7 @@
                             </form>
                         </div>
                     </div>
-                        <img class="card-img-start-fluid p-3 w-25" src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" alt="folder">
+                        <img class="card-img-start-fluid p-3 w-25" src="{{ $project->img !== null ? asset('storage/'. $project->img) : 'https://cdn-icons-png.flaticon.com/512/3767/3767084.png' }}" alt="folder">
                         <div class="card-body">
                           <h5 class="card-title">{{ $project->name}}</h5>
                           <p class="card-text">Slug: {{ $project->slug}}</p>
