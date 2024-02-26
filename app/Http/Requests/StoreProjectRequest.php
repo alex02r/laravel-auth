@@ -26,7 +26,8 @@ class StoreProjectRequest extends FormRequest
         return [
             'name'=>'required',
             'description'=>'required',
-            'start_date'=>'required'
+            'start_date'=>'required',
+            'img'=>'file|image'
         ];
     }
     public function messages(){
@@ -34,6 +35,8 @@ class StoreProjectRequest extends FormRequest
             'name' => 'Il Nome del progetto deve essere obbligatorio',
             'description' => 'La descrizione del progetto deve essere obbligatoria',
             'start_date' => 'La data di inizio del progetto deve essere obbligatoria',
+            'img.file'=>'Non hai inserito un file nel caricamento dell\'immagine',
+            'img.image'=>'Non hai inserito un estenzione valida per l\'immagine (.jpg, .png, .gif, .jpeg ...)'
         ];
     }
 }
